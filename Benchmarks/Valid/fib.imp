@@ -1,0 +1,22 @@
+program fib
+	pre 1 < N
+	post fib[0] = 0
+	post fib[1] = 1
+is
+	
+	fib[0] := 0;
+	fib[1] := 1;
+
+	i := 2;
+	while i < N
+		inv fib[0] = 0
+		inv fib[1] = 1
+		inv i <= N
+		inv i >= 2
+		inv forall j, (2 <= j && j < i) ==> (fib[j] = fib[j-1] + fib[j-2])
+	do
+		fib[i] := fib[i-1] + fib[i-2];
+		i := i + 1;
+
+	end
+end

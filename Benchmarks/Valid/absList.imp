@@ -1,0 +1,15 @@
+program absList
+	pre 0 <= N
+	post forall i, (0 <= i && i < N) ==> a[i] >= 0
+is
+	n := 0;
+	while n < N
+		inv 0 <= n && n <= N
+		inv forall i, (0 <= i && i < n) ==> a[i] >= 0
+	do
+		if a[n] < 0 then
+			a[n] := a[n] * (-1);
+		end
+		n := n + 1;
+	end
+end

@@ -1,0 +1,17 @@
+program countGreater
+	pre 0 <= N
+	post count <= N && count >= 0
+	post count > 0 || (forall j, j >= 0 && j < N ==> a[j] <= x)
+is
+	i := 0;
+	count := 0;
+	while i < N
+		inv 0 <= i && i <= N
+		inv count <= i && count >= 0
+	do
+		if a[i] > x then
+			count := count + 1;
+		end
+		i := i + 1;
+	end
+end

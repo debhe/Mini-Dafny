@@ -1,0 +1,12 @@
+program findOdd
+	pre 0 <= N
+	post (a[n] % 2) = 1 || forall i, (0 <= i && i < N) ==> (a[i] % 2) != 1
+is
+	n := 0;
+	while n < N && (a[n] % 2) != 1
+		inv 0 <= n && n <= N
+		inv forall i, (0 <= i && i < n) ==> (a[i] % 2) != 1
+	do
+		n := n + 1;
+	end
+end
